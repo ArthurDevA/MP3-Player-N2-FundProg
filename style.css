@@ -57,6 +57,12 @@ a {
     color: whitesmoke;
 }
 
+progress {
+    width: 100%;
+    height: 3rem;
+    margin-bottom: 1rem;
+}
+
 @media (min-width: 800px) {
     body{
         max-width: 60vw;

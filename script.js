@@ -15,6 +15,7 @@ const player = document.getElementById('player')
 
 function createSongList() {
     const list = document.createElement("ol")
+    list.id = "listaAtual"
     for (let i = 0; i < musicas.length; i++) {
         const item = document.createElement("li")
         item.appendChild(document.createTextNode(musicas[i]))
@@ -26,21 +27,23 @@ function createSongList() {
 const listaMusicas = document.getElementById('listaMusicas')
 
 listaMusicas.appendChild(createSongList())
+   const source = document.getElementById('source')
 
 listaMusicas.onclick = function(e) {
 
-    const source = document.getElementById('source')
-    source.src = "musicas/" + e.target.innerText
+    const ol = document.getElementById("listaAtual")
+    if(e.target != ol){
+        source.src = "musicas/" + e.target.innerText
 
-    document.querySelector('#musicaCorrente').innerText = `Tocando: ${e.target.innerText}`
+        document.querySelector('#musicaCorrente').innerText = `Tocando: ${e.target.innerText}`
 
-    player.load()
-    player.play()
+        player.load()
+        player.play()
+    }
 }
 
-// caso fosse um botão só, usar player.readyState
-
 function playAudio() {
+    if (PaymentRequest.readyState)
     player.play()
 }
 
@@ -52,4 +55,12 @@ const sliderVolume = document.getElementById("controleDeslizanteVolume")
 
 sliderVolume.oninput = function(volume) {
     player.volume = volume.target.value
+}
+
+const progressBar = document.getElementById("progresso")
+
+function updateProgress() {
+    if (player.currentTime > 0) {
+        progressBar.value = (player.currentTime / player.duration)
+    }
 }

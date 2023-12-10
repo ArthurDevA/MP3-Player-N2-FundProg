@@ -38,10 +38,18 @@ listaMusicas.onclick = function(e) {
     player.play()
 }
 
+// caso fosse um botão só, usar player.readyState
+
 function playAudio() {
     player.play()
 }
 
 function pauseAudio() {
     player.pause()
+}
+
+const sliderVolume = document.getElementById("controleDeslizanteVolume")
+
+sliderVolume.oninput = function(volume) {
+    player.volume = volume.target.value
 }

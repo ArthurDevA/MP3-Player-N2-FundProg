@@ -15,7 +15,6 @@ const player = document.getElementById('player')
 
 function createSongList() {
     const list = document.createElement("ol")
-    list.id = "listaAtual"
     for (let i = 0; i < musicas.length; i++) {
         const item = document.createElement("li")
         item.appendChild(document.createTextNode(musicas[i]))
@@ -31,15 +30,16 @@ listaMusicas.appendChild(createSongList())
 
 listaMusicas.onclick = function(e) {
 
-    const ol = document.getElementById("listaAtual")
-    if(e.target != ol){
-        source.src = "musicas/" + e.target.innerText
+    document.querySelector('#headphones').classList.remove("pulse")
 
-        document.querySelector('#musicaCorrente').innerText = `Tocando: ${e.target.innerText}`
+    source.src = "musicas/" + e.target.innerText
 
-        player.load()
-        player.play()
-    }
+    document.querySelector('#musicaCorrente').innerText = `Tocando: ${e.target.innerText}`
+
+    player.load()
+    player.play()
+
+    document.querySelector('#headphones').classList.add("pulse")
 }
 
 function playAudio() {

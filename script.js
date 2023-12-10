@@ -27,7 +27,9 @@ listaMusicas.appendChild(createSongList())
 listaMusicas.onclick = function(e) {
 
     const source = document.getElementById('source')
-    source.src = "songs/" + e.target.innerText
+    source.src = "musicas/" + e.target.innerText
+
+    document.querySelector('#musicaCorrente').innerText = `Tocando: ${e.target.innerText}`
 
     const player = document.getElementById('player')
     player.load()

@@ -20,4 +20,16 @@ function createSongList() {
     return list
 }
 
-document.getElementById('listaMusicas').appendChild(createSongList())
+const listaMusicas = document.getElementById('listaMusicas')
+
+listaMusicas.appendChild(createSongList())
+
+listaMusicas.onclick = function(e) {
+
+    const source = document.getElementById('source')
+    source.src = "songs/" + e.target.innerText
+
+    const player = document.getElementById('player')
+    player.load()
+    player.play()
+}

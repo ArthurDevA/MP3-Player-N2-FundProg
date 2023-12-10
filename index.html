@@ -10,10 +10,24 @@
     <div class="player">
         <h1>MP3 Player</h1>
         <img src="images/headphones.svg" alt="headphones image" />
-        <audio id="player" controls>
-            <source id="source" src="musicas/uiratsupu-quan-shan-tamakiniku-qing-woru-reruratsupu.mp3" />
+        <audio id="player">
+            <source id="source" />
             Áudio não suportado
         </audio>
+
+        <div id="controles">
+            <p id="musicaCorrente"></p>
+            <div class="controles-continuidade">
+                <span>&#9658;</span>
+                <span>&#10074;&#10074;</span>
+            </div>
+            <p>Volume:</p>
+            <div class="volume">
+                <span>-</span>
+                <input type="range" id="controleDeslizanteVolume" min="0" max="1" step="0.01" />
+                <span>+</span>
+            </div>
+        </div>
 
         <h2>Minhas músicas</h2>
         <div id="listaMusicas">

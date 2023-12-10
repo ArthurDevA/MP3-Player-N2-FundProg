@@ -10,6 +10,9 @@ const musicas = [
     "shiyanimasu-sos-covered-by-shigureui.mp3"
 ]
 
+const player = document.getElementById('player')
+
+
 function createSongList() {
     const list = document.createElement("ol")
     for (let i = 0; i < musicas.length; i++) {
@@ -31,7 +34,14 @@ listaMusicas.onclick = function(e) {
 
     document.querySelector('#musicaCorrente').innerText = `Tocando: ${e.target.innerText}`
 
-    const player = document.getElementById('player')
     player.load()
     player.play()
+}
+
+function playAudio() {
+    player.play()
+}
+
+function pauseAudio() {
+    player.pause()
 }
